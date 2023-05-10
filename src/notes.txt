@@ -1,0 +1,103 @@
+react Day3-24session
+1)cerate a like and dislike using useState withinteger
+import './App.css';
+import { useState } from 'react';
+function App() {
+  return (
+    <div className="App">
+<Counter/>
+    </div>
+  );
+}
+function Counter(){
+  const [like,setLike]=useState(0);
+  const [dislike,setDislike]=useState(0)
+  return(
+    <div>
+<button onClick ={()=> setLike(like+1) } >👍-{like}</button>
+<button onClick ={()=> setDislike(dislike+1) } >👎-{dislike}</button>
+
+    </div>
+  );
+
+}
+export default App;
+
+//2)cerate a like and dislike using useState with string
+import './App.css';
+import { useState } from 'react';
+function App() {
+  return (
+    <div className="App">
+      <Addcolor/>
+    </div>
+  );
+}
+function Addcolor(){
+  const [color,setColor]=useState("skyblue");
+  // const color = "red";
+const Styles = {
+  backgroundColor:color,
+}
+ 
+  return(
+    <div>
+<input style={Styles} type="text" onChange ={(event)=>setColor(event.target.value)} value={color}></input>
+    </div>
+  );
+
+}
+
+export default App;
+
+3)passing array of string in usestate
+import './App.css';
+import { useState } from 'react';
+function App() {
+  return (
+    <div className="App">
+      <Addcolor/>
+    </div>
+  );
+}
+function Addcolor(){
+  const [color,setColor]=useState("skyblue");
+  const [colorList,setcolorList]=useState(["yellow","blue","green"]);
+  // const color = "red";
+const Styles = {
+  backgroundColor:color,
+}
+ 
+  return(
+    <div>
+<input style={Styles} type="text" onChange ={(event)=>setColor(event.target.value)} 
+value={color}></input>
+<button onClick={()=>setcolorList([...colorList,color]) }>Add Color</button>
+{colorList.map((clr)=>
+<ColorBox color={clr}/>
+)}
+
+    </div>
+
+  );
+
+}
+function ColorBox({color}){
+  const styles={
+    background: color,
+    width:"300px",
+    height:"40px",
+    margin:"10px"
+
+  }
+
+  return(
+    <div style ={styles}>
+
+    </div>
+  );
+
+}
+
+export default App;
+
